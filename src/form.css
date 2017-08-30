@@ -1,0 +1,16 @@
+form {
+  width: 100%;
+  background-color: #c53f59;
+  border-radius: 10%;
+}
+
+.btn-primary{
+  color:#fff170;
+  background-color: #963256;
+  border-color:#fff170;
+}
+
+.btn-primary:hover{
+  background-color: #fff170;
+  color: #c53f59;
+}

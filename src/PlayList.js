@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PlayListItem from './PlayListItem.js';
+import './playlist.css'
 
 class PlayList extends Component {
   constructor(props) {
@@ -14,25 +15,25 @@ class PlayList extends Component {
     this.fetchData();
   }
 
-//Also in your PlayList component you should have a function that manually updates
-//the playlist when a user presses a button. Use the following "fetchData" function
-//to manually update your playlist.
-
+//fetch, then function that manually updates the playlist when a user presses a button.
   fetchData = () => {
       fetch('https://tiny-lasagna-server.herokuapp.com/collections/playlisting').then(results => {
         return results.json();
       }).then(data => {
         this.setState({songs: data});
+        console.log({songs:data});
       })
-    }
+  }
 
   render() {
     return (
-      <div>
-      <button onClick={() => this.fetchData()}>Click me</button>
-      {this.state.songs.map((songs, i) => {
-        return (< PlayListItem key={i} song={songs} />)
-    })}
+      <div className="buttonAndSongs">
+        <button className="btn btn-primary btn-lg" onClick={() => this.fetchData()}>Click me to see new stuff!</button>
+        <h1>Playlist:</h1>
+        <hr/>
+        {this.state.songs.map((song, i) => {
+          return (<PlayListItem key={i} song={song} />)
+      })}
       </div>
     )
   }
